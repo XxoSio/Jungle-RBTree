@@ -25,12 +25,13 @@ node_t *rbtree_insert(rbtree *t, const key_t key) {
         y->left = z;
     }
     else{
-        y->right = t->nil;
+        y->right = z;
     }
 
     z->left = t->nil;
     z->right = t->nil;
     z->color = RBTREE_RED;
+    z->key = key;
 
     rbtree_insert_fixup(t, z);
 
