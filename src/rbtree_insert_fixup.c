@@ -2,6 +2,8 @@
 
 node_t *rbtree_insert_fixup(rbtree *t, node_t *z) {
     // TODO: implement insert
+
+    
     while(z->parent->color== RBTREE_RED){
         if(z->parent == z->parent->parent->left){
             node_t *y = z->parent->parent->right;
