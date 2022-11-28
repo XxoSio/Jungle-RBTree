@@ -1,8 +1,12 @@
 #ifndef _RBTREE_H_
 #define _RBTREE_H_
 
+#define SENTINEL
+
 #include <stdio.h>
 #include <stddef.h>
+#include <assert.h>
+#include <stdbool.h>
 #include <stdlib.h>
 
 // color 집합 - RBTREE_RED = 0 / RBTREE_BLACK = 1
@@ -35,14 +39,13 @@ node_t *rbtree_insert_fixup(rbtree *, node_t *);
 node_t *left_rotate(rbtree *, node_t *);
 node_t *right_rotate(rbtree *, node_t *);
 
+void delete_rbtree(rbtree *);
+
+node_t *rbtree_find(const rbtree *, const key_t);
+node_t *rbtree_min(const rbtree *);
+node_t *rbtree_max(const rbtree *);
+int rbtree_erase(rbtree *, node_t *);
+
+int rbtree_to_array(const rbtree *, key_t *, const size_t);
 
 #endif  // _RBTREE_H_
-
-// void delete_rbtree(rbtree *);
-
-// node_t *rbtree_find(const rbtree *, const key_t);
-// node_t *rbtree_min(const rbtree *);
-// node_t *rbtree_max(const rbtree *);
-// int rbtree_erase(rbtree *, node_t *);
-
-// int rbtree_to_array(const rbtree *, key_t *, const size_t);

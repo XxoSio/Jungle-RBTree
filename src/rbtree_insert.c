@@ -2,6 +2,7 @@
 
 node_t *rbtree_insert(rbtree *t, const key_t key) {
     // TODO: implement insert
+    
     // 삽입할 노드 z 메모리 할당
     node_t *z = (node_t *)calloc(1, sizeof(node_t));
     //

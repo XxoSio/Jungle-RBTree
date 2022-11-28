@@ -8,9 +8,9 @@ node_t *left_rotate(rbtree *t, node_t *x) {
     // y의 왼쪽 자식 노드를 x의 오른쪽 자식 노드로 변경
     x->right = y->left;
     
-    // y의 왼쪽 자식 노드가 nill이 아니라면
+    // y의 왼쪽 자식 노드가 nil이 아니라면
     if(y->left != t->nil){
-        // y의 왼쪽 자식의 부모 노드를 x로 변경
+        // y의 왼쪽 자식 노드의 부모 노드를 x로 변경
         y->left->parent = x;
     }
 
