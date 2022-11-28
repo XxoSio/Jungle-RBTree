@@ -24,5 +24,7 @@ int main(int argc, char *argv[]) {
   inorder(t, t->root);
   printf("root = %d\n", t->root->key);
 
+  system("pause");
+  
   return 0;
 }
