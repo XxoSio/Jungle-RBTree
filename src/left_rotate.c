@@ -1,26 +1,30 @@
+// 02_left,right_rotate01_pseudo 참고
+// 02_left,right_rotate02_graph 참고
 #include "rbtree.h"
 
-node_t *left_rotate(rbtree *t, node_t *z) {
+node_t *left_rotate(rbtree *t, node_t *x) {
     // TODO: implement insert
-    node_t *y = z->right;
-    z->right = y->left;
+    // x의 오른쪽 자식노드인 y를 설정한다
+    node_t *y = x->right;
+    // y의 왼쪽 자식 노드(베타)를 x의 오른쪽 자식 노드로 변경
+    x->right = y->left;
 
     if(y->left != t->nil){
-        y->left->parent = z;
+        y->left->parent = x;
     }
 
-    y->parent = z->parent;
+    y->parent = x->parent;
 
-    if(z->parent == t->nil){
+    if(x->parent == t->nil){
         t->root = y;
     }
-    else if(z == z->parent->left){
-        z->parent->left = y;
+    else if(x == x->parent->left){
+        x->parent->left = y;
     }
     else{
-        z->parent->left = y;
+        x->parent->left = y;
     }
 
-    y->left = z;
-    z->parent = y;
+    y->left = x;
+    x->parent = y;
 }
