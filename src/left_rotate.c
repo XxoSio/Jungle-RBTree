@@ -30,7 +30,7 @@ node_t *left_rotate(rbtree *t, node_t *x) {
 		// x가 부모 노드의 오른쪽 자식 노드이면
     else{
         //x의 부모 노드의 오른쪽 자식 노드를 y로 변경
-        x->parent->left = y;
+        x->parent->right = y;
     }
 
     // y의 왼쪽 자식을 x로 변경

@@ -41,7 +41,7 @@ node_t *rbtree_insert_fixup(rbtree *t, node_t *z) {
             z->parent->color = RBTREE_BLACK;
             z->parent->parent->color = RBTREE_RED;
                  
-            // right_rotate(t, z->parent->parent);
+            right_rotate(t, z->parent->parent);
         }
     }
 
