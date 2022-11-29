@@ -10,12 +10,15 @@ node_t *rbtree_insert(rbtree *t, const key_t key) {
     // 트리의 루트 노드인 x 설정
     node_t *x = t->root;
 
+    // z의 key를 입력받은 key로 변경
+    z->key = key;
+
     // x 노드가 nil이 아니라면
     while(x != t->nil){
         // y는 x를 저장
         y = x;
-        // z의 key가 x의 key보다 작으면
-        if(z->key < x->key){
+        // z의 key가 y의 key보다 작으면
+        if(z->key < y->key){
             // x에 x의 왼쪽 자식 노드 저장
             x = x->left;
         }
@@ -51,8 +54,6 @@ node_t *rbtree_insert(rbtree *t, const key_t key) {
     z->right = t->nil;
     // z의 색상을 RBTREE_RED로 변경
     z->color = RBTREE_RED;
-    // z의 key를 입력바은 key로 변경
-    z->key = key;
 
     //RB Tree의 속성에 맞도록 수정하는 함수
     rbtree_insert_fixup(t, z);

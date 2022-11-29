@@ -46,9 +46,11 @@ node_t *rbtree_min(const rbtree *);
 // RB Tree 중 최대값 탐색
 node_t *rbtree_max(const rbtree *);
 
+// RB Tree의 내용을 key 순서대로 주어진 array 반환
+int rbtree_to_array(const rbtree *, key_t *, const size_t);
+
 void delete_rbtree(rbtree *);
 int rbtree_erase(rbtree *, node_t *);
 
-int rbtree_to_array(const rbtree *, key_t *, const size_t);
 
 #endif  // _RBTREE_H_

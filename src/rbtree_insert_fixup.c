@@ -24,23 +24,25 @@ node_t *rbtree_insert_fixup(rbtree *t, node_t *z) {
                 // z를 z의 조부모로 노드 변경
                 z = z->parent->parent;
             }
-            // 경우2 : z의 삼촌 y가 흑색이며 z가 오른쪽 자식인 경우
-            // z가 z의 부모의 오른쪽 노드인 경우
-            else if(z == z->parent->right){
-                // z를 z의 부모로 변경
-                z = z->parent;
-                // z를 중심으로 왼쪽으로 회전
-                left_rotate(t, z);
-            }
+            else{ 
+                // 경우2 : z의 삼촌 y가 흑색이며 z가 오른쪽 자식인 경우
+                // z가 z의 부모의 오른쪽 노드인 경우
+                if(z == z->parent->right){
+                    // z를 z의 부모로 변경
+                    z = z->parent;
+                    // z를 중심으로 왼쪽으로 회전
+                    left_rotate(t, z);
+                }
 
-            // 경우3 : z의 삼촌 y가 흑색이며 z가 왼쪽 자식인 경우
-            // z의 부모의 색상을 흑색으로 변경
-            z->parent->color = RBTREE_BLACK;
-            // z의 조부모의 색상을 붉은색으로 변경
-            z->parent->parent->color = RBTREE_RED;
-            
-            // z의 조부모를 중심으로 오른쪽 회전
-            right_rotate(t, z->parent->parent);
+                // 경우3 : z의 삼촌 y가 흑색이며 z가 왼쪽 자식인 경우
+                // z의 부모의 색상을 흑색으로 변경
+                z->parent->color = RBTREE_BLACK;
+                // z의 조부모의 색상을 붉은색으로 변경
+                z->parent->parent->color = RBTREE_RED;
+                
+                // z의 조부모를 중심으로 오른쪽 회전
+                right_rotate(t, z->parent->parent);
+            }
         }
         // z의 부모 노드가 오른쪽 자식 노드인 경우
         // => z의 부모 노드가 z의 조부모의 오른쪽 자식인 경우
@@ -60,22 +62,24 @@ node_t *rbtree_insert_fixup(rbtree *t, node_t *z) {
                 // z를 z의 조부모로 변경
                 z = z->parent->parent;
             }
-            // 경우2 : z의 삼촌 y가 흑색이며 z가 오른쪽 자식인 경우
-            // z가 z의 부모의 오른쪽 노드인 경우
-            else if(z == z->parent->parent){
-                // z를 z의 부모로 변경
-                z = z->parent;
-                // z를 중심으로 왼쪽 회전
-                left_rotate(t, z);
-            }
+            else{
+                // 경우2 : z의 삼촌 y가 흑색이며 z가 오른쪽 자식인 경우
+                // z가 z의 부모의 왼쪽 노드인 경우
+                if(z == z->parent->left){
+                    // z를 z의 부모로 변경
+                    z = z->parent;
+                    // z를 중심으로 오른쪽 회전
+                    right_rotate(t, z);
+                }
 
-            // 경우3 : z의 삼촌 y가 흑색이며 z가 왼쪽 자식인 경우
-            // z의 부모의 색상을 흑색으로 변경
-            z->parent->color = RBTREE_BLACK;
-            // z의 조부모의 색상을 붉은색으로 변경
-            z->parent->parent->color = RBTREE_RED;
-            // z의 조부모를 중심으로 오른쪽 회전
-            right_rotate(t, z->parent->parent);
+                // 경우3 : z의 삼촌 y가 흑색이며 z가 왼쪽 자식인 경우
+                // z의 부모의 색상을 흑색으로 변경
+                z->parent->color = RBTREE_BLACK;
+                // z의 조부모의 색상을 붉은색으로 변경
+                z->parent->parent->color = RBTREE_RED;
+                // z의 조부모를 중심으로 왼쪽 회전
+                left_rotate(t, z->parent->parent);
+            }
         }
     }
 

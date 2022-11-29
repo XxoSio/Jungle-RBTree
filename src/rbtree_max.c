@@ -7,7 +7,7 @@ node_t *rbtree_max(const rbtree *t) {
     node_t *tmp = t->root;
 
     // nil까지 계속 탐색
-    while(tmp != t->nil) { 
+    while(tmp->right != t->nil) { 
         // max를 찾아야 하므로 계속해서 오른쪽 자식으로 이동
         tmp = tmp->right;
     }

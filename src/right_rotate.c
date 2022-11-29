@@ -5,7 +5,7 @@ node_t *right_rotate(rbtree *t, node_t *x) {
 
     // x의 오른쪽 자식노드인 y를 설정
     node_t *y = x->left;
-    // y의 왼쪽 자식 노드를 x의 오른쪽 자식 노드로 변경
+    // y의 오른쪽 자식 노드를 x의 왼쪽 자식 노드로 변경
     x->left = y->right;
 
     // y의 오른쪽 자식 노드가 nil 노드가 아니면
@@ -29,8 +29,8 @@ node_t *right_rotate(rbtree *t, node_t *x) {
     }
     // x가 x의 부모 노드의 오른쪽 자식 노드이면
     else{
-        // x의 부모 노드의 오른쪽 자식 노드를 y로 변경
-        x->parent->right = y;
+        // x의 부모 노드의 왼쪽 자식 노드를 y로 변경
+        x->parent->left = y;
     }
 
     // y의 오른쪽 자식 노드를 x로 변경
