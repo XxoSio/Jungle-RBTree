@@ -39,11 +39,14 @@ node_t *rbtree_insert_fixup(rbtree *, node_t *);
 node_t *left_rotate(rbtree *, node_t *);
 node_t *right_rotate(rbtree *, node_t *);
 
-void delete_rbtree(rbtree *);
-
+// tree내의 key 탐색
 node_t *rbtree_find(const rbtree *, const key_t);
+// RB Tree 중 최소값 탐색
 node_t *rbtree_min(const rbtree *);
+// RB Tree 중 최대값 탐색
 node_t *rbtree_max(const rbtree *);
+
+void delete_rbtree(rbtree *);
 int rbtree_erase(rbtree *, node_t *);
 
 int rbtree_to_array(const rbtree *, key_t *, const size_t);
