@@ -1,17 +1,19 @@
 #include "rbtree.h"
 
 void rbtree_erase_fixup(rbtree *t, node_t *x) {
-    while(x != t->root && x->color != RBTREE_BLACK){
-        node_t *w;
-
-        if(x == x->parent->right){
+    node_t *w;
+    while(x != t->root && x->color == RBTREE_BLACK){
+        if(x == x->parent->left){
             w = x->parent->right;
 
             // case1 
-            if(w->color = RBTREE_RED){
+            if(w->color == RBTREE_RED){
                 w->color = RBTREE_BLACK;
                 x->parent->color = RBTREE_RED;
+                 
                 left_rotate(t, x->parent);
+                
+                w = x->parent->right;
             }
             // case2
             if(w->left->color == RBTREE_BLACK && w->right->color == RBTREE_BLACK){
@@ -50,8 +52,13 @@ void rbtree_erase_fixup(rbtree *t, node_t *x) {
 
                 w = x->parent->left;
             }
+            
+            if(w->right->color == RBTREE_BLACK && w->left->color == RBTREE_BLACK){
+                    w->color = RBTREE_RED;
+                    x = x->parent;
+            }
             else{
-                if(w->left->color == RBTREE_BLACK && w->left->color == RBTREE_BLACK){
+                if(w->left->color == RBTREE_BLACK){
                     w->right->color = RBTREE_BLACK;
                     w->color = RBTREE_RED;
 
@@ -65,6 +72,7 @@ void rbtree_erase_fixup(rbtree *t, node_t *x) {
                 w->left->color = RBTREE_BLACK;
 
                 right_rotate(t, x->parent);
+                
                 x = t->root;
             }
         }
