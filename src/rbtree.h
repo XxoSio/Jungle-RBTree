@@ -50,10 +50,12 @@ node_t *rbtree_max(const rbtree *);
 // RB Tree의 내용을 key 순서대로 주어진 array 반환
 int rbtree_to_array(const rbtree *, key_t *, const size_t);
 
+// 한개의 노드를 삭제
 int rbtree_erase(rbtree *, node_t *);
+// 노드를 삭제후 RBTree 규칙에 맞도록 수정
 void rbtree_erase_fixup(rbtree *, node_t *);
 
+// 트리 전체를 삭제
 void delete_rbtree(rbtree *);
-
 
 #endif  // _RBTREE_H_
