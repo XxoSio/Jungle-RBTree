@@ -8,10 +8,10 @@
 // //   return p;
 // // }
 
-void delete_rbtree(rbtree *t) {
-  // TODO: reclaim the tree nodes's memory
-  free(t);
-}
+// void delete_rbtree(rbtree *t) {
+//   // TODO: reclaim the tree nodes's memory
+//   free(t);
+// }
 
 // // node_t *rbtree_insert(rbtree *t, const key_t key) {
 // //   // TODO: implement insert
@@ -33,10 +33,10 @@ void delete_rbtree(rbtree *t) {
 //   return t->root;
 // }
 
-int rbtree_erase(rbtree *t, node_t *p) {
-  // TODO: implement erase
-  return 0;
-}
+// int rbtree_erase(rbtree *t, node_t *p) {
+//   // TODO: implement erase
+//   return 0;
+// }
 
 // int rbtree_to_array(const rbtree *t, key_t *arr, const size_t n) {
 //   // TODO: implement to_array
