@@ -93,3 +93,51 @@ void rbtree_transplant(rbtree *t, node_t *u, node_t *v){
     // v의 부모 노드를 u의 부모 노드로 변경
     v->parent = u->parent;
 }
+
+// node_t *find_successor(rbtree *t, node_t *p) {
+//   while (p->left != t->nil) {
+//     p = p->left;
+//   }
+//   return p;  
+// }
+
+// void transplant(rbtree *t, node_t *u, node_t *v) {
+//   if (u->parent == t->nil) t->root = v;
+//   else if (u == u->parent->left) u->parent->left = v;
+//   else u->parent->right = v;
+//   v->parent = u->parent;
+// }
+
+// int rbtree_erase(rbtree *t, node_t *p) {
+//   node_t *y = p;
+//   node_t *x;
+//   color_t y_original_color = y->color;
+//   if (p->left == t->nil) {
+//     x = p->right;
+//     transplant(t, p, p->right);
+//   }
+//   else if (p->right == t->nil) {
+//     x = p->left;
+//     transplant(t, p, p->left);
+//   }
+//   else {
+//     y = find_successor(t, p->right);
+//     y_original_color = y->color;
+//     x = y->right;
+//     if (y->parent == p) x->parent = y;
+//     else {
+//       transplant(t, y, y->right);
+//       y->right = p->right;
+//       y->right->parent = y;
+//     }
+//     transplant(t, p, y);
+//     y->left = p->left;
+//     y->left->parent = y;
+//     y->color = p->color;
+//   }
+//   if (y_original_color == RBTREE_BLACK) {
+//     rbtree_erase_fixup(t, x);
+//   }
+//   free(p);
+//   return 0;
+// }
